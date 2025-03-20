@@ -5,10 +5,11 @@
 
 Inspired by my one-of-a-kind generative NFT, **Counterchange Tessellation: Abundance**, this profile is a living, evolving showcase of art, code, and creative technology.
 
-**What You'll Discover Here:**
-- **Dynamic Visualizations:** Live GitHub stats and project milestones.
-- **Interactive Terminal:** Run commands to reveal hidden messages, latest commits, and more.
-- **NFT & Web3 Integration:** Explore my digital art and fully on-chain projects.
-- **Live Social Feed:** Connect with me across all platforms—Twitter, Instagram, GitHub, YouTube, and beyond.
+**Discover:**
+- **Dynamic Visualizations:** Live GitHub stats & milestones.
+- **Interactive Terminal:** Type commands to explore my story.
+- **NFT & Web3 Integration:** See my on-chain art and projects.
+- **Live Social Feed:** Stay updated with my latest tweets.
+- **Digital Showcase:** Visit my [Linktree](https://linktr.ee/jams2blues) for FOC NFTs, Web3 tools, and my record-breaking 25h 15m improvised guitar solo.
 
-[Click here for the full interactive experience →](https://jams2blues.github.io/)
+[Experience the full interactive profile →](https://jams2blues.github.io/)

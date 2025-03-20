@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jams2Blues Interactive Profile</title>
   <link rel="stylesheet" href="assets/style.css">
-  <!-- Optional: FontAwesome for social media icons -->
+  <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
         integrity="sha512-xh6ycT8b7F/E3L9bR8pVw1uECX5+Epl6tB+zFZkqg+6lycDqFBVnZ5z3lXfrEVde1pC8K4H9E+ZSnN4e+Erb/g==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <!-- Animated Header Inspired by "Counterchange Tessellation: Abundance" -->
-  <header>
+  <!-- Banner Section with Fullscreen Toggle -->
+  <header id="header-container">
     <object type="image/svg+xml" data="assets/abundance.svg" id="animated-header">
       Your browser does not support SVG.
     </object>
+    <button id="fullscreen-btn">Fullscreen</button>
   </header>
 
   <!-- Social Media Navigation -->
@@ -26,17 +27,24 @@
       <li><a href="https://instagram.com/jams2blues" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
       <li><a href="https://github.com/jams2blues" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
       <li><a href="https://youtube.com/@jams2blues" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
-      <!-- Add more social links if desired -->
+      <li><a href="https://tiktok.com/@jams2blues" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a></li>
+      <li><a href="https://linktr.ee/jams2blues" target="_blank"><i class="fas fa-link"></i> Linktree</a></li>
     </ul>
   </nav>
 
+  <!-- About Section -->
+  <section id="about">
+    <h2>About @jams2blues &amp; @quantaphoria</h2>
+    <p>@jams2blues is a World Record Guitarist, visionary artist, and the dynamic lead singer of <a href="https://twitter.com/quantaphoria" target="_blank">@quantaphoria</a>. With "Save The World With Art™" as his mantra, he fuses cutting-edge digital art with electrifying musical performances, redefining the intersection of art and technology.</p>
+  </section>
+
   <!-- Real-Time Stats Section -->
   <section id="stats">
-    <h2>Real-Time Stats & Milestones</h2>
+    <h2>Real-Time Stats &amp; Milestones</h2>
     <canvas id="statsChart" width="400" height="200"></canvas>
   </section>
 
-  <!-- Interactive Terminal Simulation -->
+  <!-- Interactive Terminal Section -->
   <section id="terminal">
     <h2>Interactive Terminal</h2>
     <div id="terminal-container">
@@ -50,27 +58,38 @@ Type 'help' to see available commands...
 
   <!-- Multimedia Gallery Section -->
   <section id="multimedia">
-    <h2>NFT & Multimedia Showcase</h2>
+    <h2>NFT &amp; Multimedia Showcase</h2>
     <div class="carousel">
-      <!-- Replace or add more media assets as desired -->
       <img src="assets/abundance.png" alt="Abundance Snapshot">
     </div>
   </section>
 
-  <!-- Live Social Feed Section -->
+  <!-- Live Twitter Feed Section -->
   <section id="social-feed">
     <h2>Live Twitter Feed</h2>
     <a class="twitter-timeline" data-height="400" href="https://twitter.com/jams2blues?ref_src=twsrc%5Etfw">Tweets by jams2blues</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </section>
 
-  <!-- Terminal and Chart Scripts -->
+  <!-- Digital Showcase Section -->
+  <section id="linktree">
+    <h2>My Digital Showcase</h2>
+    <p>Discover my FOC NFTs, Web3 tools, and my record-breaking 25h 15m improvised guitar solo:</p>
+    <a href="https://linktr.ee/jams2blues" target="_blank" class="linktree-button">Visit My Linktree</a>
+  </section>
+
+  <!-- Like Button / Visitor Counter Section -->
+  <section id="like-section">
+    <h2>Show Some Love</h2>
+    <button id="like-button">❤️ I visited this page</button>
+    <p id="like-count">Likes: ...</p>
+  </section>
+
+  <!-- Scripts -->
   <script src="assets/terminal.js"></script>
-  <!-- Chart.js from CDN; self-host if desired -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Render a sample chart using Chart.js.
-    // (Replace the sample data with dynamic GitHub stats via API if desired.)
+    // Render Chart.js graph (sample data; replace with live API data if desired)
     const ctx = document.getElementById('statsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
@@ -88,6 +107,49 @@ Type 'help' to see available commands...
         scales: { y: { beginAtZero: true } }
       }
     });
+  </script>
+  <script>
+    // Fullscreen toggle for the generative artwork banner
+    document.getElementById('fullscreen-btn').addEventListener('click', function() {
+      const banner = document.getElementById('animated-header');
+      if (!document.fullscreenElement) {
+        banner.requestFullscreen().catch(err => {
+          alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
+  <script>
+    // Like button functionality using CountAPI (serverless visitor counter)
+    const likeButton = document.getElementById('like-button');
+    const likeCountDisplay = document.getElementById('like-count');
+    const countAPIUrl = "https://api.countapi.xyz";
+
+    function updateLikeCount() {
+      fetch(`${countAPIUrl}/get/jams2blues/visited`)
+        .then(response => response.json())
+        .then(data => {
+          likeCountDisplay.textContent = `Likes: ${data.value}`;
+        })
+        .catch(() => {
+          likeCountDisplay.textContent = "Likes: N/A";
+        });
+    }
+
+    likeButton.addEventListener('click', () => {
+      fetch(`${countAPIUrl}/hit/jams2blues/visited`)
+        .then(response => response.json())
+        .then(data => {
+          likeCountDisplay.textContent = `Likes: ${data.value}`;
+        })
+        .catch(() => {
+          likeCountDisplay.textContent = "Likes: Error";
+        });
+    });
+
+    updateLikeCount();
   </script>
 </body>
 </html>

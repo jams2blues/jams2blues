@@ -8,11 +8,24 @@ body {
 }
 
 header {
+    position: relative;
     width: 100%;
+    max-height: 400px;  /* Limits banner height */
     overflow: hidden;
 }
 
-/* Social Media Navigation */
+#fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 #social-links ul {
     list-style: none;
     padding: 10px;
@@ -31,17 +44,21 @@ header {
     transition: color 0.3s ease;
 }
 #social-links ul li a:hover {
-    color: #1da1f2; /* Accent color */
+    color: #1da1f2;
 }
 
-/* Main Sections */
-#stats, #terminal, #multimedia, #social-feed {
+section {
     padding: 20px;
     margin: 0 auto;
     max-width: 800px;
 }
 
-/* Terminal Styles */
+#about {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 #terminal-container {
     background: #000;
     color: #0f0;
@@ -64,7 +81,6 @@ header {
     margin-top: 5px;
 }
 
-/* Multimedia Gallery */
 .carousel {
     display: flex;
     overflow-x: auto;
@@ -74,4 +90,32 @@ header {
     max-width: 100%;
     height: auto;
     border: 2px solid #eee;
+}
+
+.linktree-button {
+    display: inline-block;
+    background: #1da1f2;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+.linktree-button:hover {
+    background: #0d8ddb;
+}
+
+#like-section {
+    text-align: center;
+    padding: 20px;
+}
+#like-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background: #1da1f2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
