@@ -125,10 +125,11 @@ Type 'help' to see available commands...
     // Like button functionality using CountAPI (serverless visitor counter)
     const likeButton = document.getElementById('like-button');
     const likeCountDisplay = document.getElementById('like-count');
+    // Updated endpoint using 'homepage' as the key to avoid potential issues
     const countAPIUrl = "https://api.countapi.xyz";
-
+  
     function updateLikeCount() {
-      fetch(`${countAPIUrl}/get/jams2blues/visited`)
+      fetch(`${countAPIUrl}/get/jams2blues/homepage`)
         .then(response => response.json())
         .then(data => {
           likeCountDisplay.textContent = `Likes: ${data.value}`;
@@ -137,9 +138,9 @@ Type 'help' to see available commands...
           likeCountDisplay.textContent = "Likes: N/A";
         });
     }
-
+  
     likeButton.addEventListener('click', () => {
-      fetch(`${countAPIUrl}/hit/jams2blues/visited`)
+      fetch(`${countAPIUrl}/hit/jams2blues/homepage`)
         .then(response => response.json())
         .then(data => {
           likeCountDisplay.textContent = `Likes: ${data.value}`;
@@ -148,8 +149,8 @@ Type 'help' to see available commands...
           likeCountDisplay.textContent = "Likes: Error";
         });
     });
-
+  
     updateLikeCount();
-  </script>
+  </script>  
 </body>
 </html>
