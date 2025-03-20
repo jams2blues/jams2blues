@@ -35,7 +35,7 @@ header {
 }
 
 /* Main Sections */
-#stats, #terminal, #multimedia {
+#stats, #terminal, #multimedia, #social-feed {
     padding: 20px;
     margin: 0 auto;
     max-width: 800px;

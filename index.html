@@ -7,7 +7,9 @@
   <title>Jams2Blues Interactive Profile</title>
   <link rel="stylesheet" href="assets/style.css">
   <!-- Optional: FontAwesome for social media icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6ycT8b7F/E3L9bR8pVw1uECX5+Epl6tB+zFZkqg+6lycDqFBVnZ5z3lXfrEVde1pC8K4H9E+ZSnN4e+Erb/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+        integrity="sha512-xh6ycT8b7F/E3L9bR8pVw1uECX5+Epl6tB+zFZkqg+6lycDqFBVnZ5z3lXfrEVde1pC8K4H9E+ZSnN4e+Erb/g==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <!-- Animated Header Inspired by "Counterchange Tessellation: Abundance" -->
@@ -17,7 +19,7 @@
     </object>
   </header>
 
-  <!-- Social Media Links -->
+  <!-- Social Media Navigation -->
   <nav id="social-links">
     <ul>
       <li><a href="https://twitter.com/jams2blues" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
@@ -50,18 +52,25 @@ Type 'help' to see available commands...
   <section id="multimedia">
     <h2>NFT & Multimedia Showcase</h2>
     <div class="carousel">
-      <!-- Add additional media assets as desired -->
+      <!-- Replace or add more media assets as desired -->
       <img src="assets/abundance.png" alt="Abundance Snapshot">
     </div>
   </section>
 
+  <!-- Live Social Feed Section -->
+  <section id="social-feed">
+    <h2>Live Twitter Feed</h2>
+    <a class="twitter-timeline" data-height="400" href="https://twitter.com/jams2blues?ref_src=twsrc%5Etfw">Tweets by jams2blues</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </section>
+
   <!-- Terminal and Chart Scripts -->
   <script src="assets/terminal.js"></script>
-  <!-- Chart.js from CDN; self-host if preferred -->
+  <!-- Chart.js from CDN; self-host if desired -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // Render a sample chart using Chart.js.
-    // Replace sample data with live GitHub stats via API if desired.
+    // (Replace the sample data with dynamic GitHub stats via API if desired.)
     const ctx = document.getElementById('statsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
