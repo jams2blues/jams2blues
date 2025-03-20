@@ -1,6 +1,9 @@
 # .github/workflows/update-profile.yml
 name: Update Profile Stats
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '0 * * * *'  # Runs every hour
@@ -18,7 +21,6 @@ jobs:
       - name: Update Dynamic Stats (Sample)
         run: |
           echo "Updating profile stats..."
-          # Example: Replace sample commit count in README.md (customize as needed)
           sed -i 's/Commits: [0-9]\+/Commits: 42/' README.md
 
       - name: Commit Changes
