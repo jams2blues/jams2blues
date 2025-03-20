@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +35,9 @@
   <section id="about">
     <h2>About @jams2blues &amp; @quantaphoria</h2>
     <p>
-      @jams2blues is an internationally exhibited artist, world record-holding guitarist, and the dynamic lead singer of 
-      <a href="https://twitter.com/quantaphoria" target="_blank">@quantaphoria</a>. With the mantra <strong>"Save The World With Art™"</strong>, he fuses cutting-edge digital art with electrifying live performances, reimagining the future of creative expression.
+      @jams2blues is an internationally exhibited artist, world record–holding guitarist, and the dynamic lead singer of 
+      <a href="https://twitter.com/quantaphoria" target="_blank">@quantaphoria</a>. With the mantra 
+      <strong>"Save The World With Art™"</strong>, he fuses cutting-edge digital art with electrifying live performances to redefine creative expression.
     </p>
   </section>
 
@@ -92,7 +92,7 @@ Type 'help' to see available commands...
   <script src="assets/terminal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Sample Chart.js graph (placeholder data)
+    // Render a sample Chart.js graph (placeholder data)
     const ctx = document.getElementById('statsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
@@ -155,62 +155,122 @@ Type 'help' to see available commands...
     updateLikeCount();
   </script>
   <script>
-    // Dynamic NFT & Multimedia Showcase using TzKT API for Tezos NFTs
+    // Dynamic NFT & Multimedia Showcase
     const nftList = [
-      {
-        chain: "Tezos",
-        contract: "KT1KyEo6DeKzpxCT1qusrgPJt5noWdiEpYPJ",
-        tokenId: "3",
-        marketplace: "https://objkt.com/asset/KT1KyEo6DeKzpxCT1qusrgPJt5noWdiEpYPJ/3"
-      },
-      {
-        chain: "Tezos",
-        contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn",
-        tokenId: "123",  // example token id; update as needed
-        marketplace: "https://objkt.com/asset/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/123"
-      }
-      // Add additional NFT objects here for other tokens and blockchains
+      // Tezos: Compressionism FOC (excluding Abundance)
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "14", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/14" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "13", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/13" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "12", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/12" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "11", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/11" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "9",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/9" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "7",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/7" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "6",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/6" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "5",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/5" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "3",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/3" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "2",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/2" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "1",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/1" },
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "0",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/0" },
+
+      // Foundation (Ethereum) FOC Collection – Efficax/Manifold
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "12", marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/12" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "11", marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/11" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "5",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/5" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "7",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/7" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "8",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/8" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "1",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/1" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "6",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/6" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "2",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/2" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "9",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/9" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "4",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/4" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "3",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/3" },
+      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "10", marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/10" },
+
+      // Base: Jams2blues Artistry Collection – contract: 0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "12", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/12" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "13", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/13" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "14", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/14" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "15", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/15" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "16", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/16" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "11", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/11" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "17", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/17" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "18", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/18" },
+      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "10", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/10" }
     ];
 
+    // Fetch functions for different chains
     function fetchTezosNFT(contract, tokenId) {
       const url = `https://api.tzkt.io/v1/tokens?contract=${contract}&tokenId=${tokenId}`;
       return fetch(url)
         .then(response => response.json())
-        .then(data => {
-          if (data.length > 0) {
-            return data[0]; // take the first result
-          }
-          return null;
-        });
+        .then(data => data.length > 0 ? data[0] : null)
+        .catch(() => null);
+    }
+
+    function fetchFoundationNFT(contract, tokenId) {
+      // Assumed endpoint – adjust if needed
+      const url = `https://api.foundation.app/v2/editions/${contract}/${tokenId}`;
+      return fetch(url)
+        .then(response => response.json())
+        .then(data => data)
+        .catch(() => null);
+    }
+
+    function fetchBaseNFT(contract, tokenId) {
+      // Using OpenSea's public asset endpoint (may be limited)
+      const url = `https://api.opensea.io/api/v1/asset/${contract}/${tokenId}/?include_orders=false`;
+      return fetch(url)
+        .then(response => response.json())
+        .then(data => data)
+        .catch(() => null);
     }
 
     function renderNFTs() {
       const container = document.querySelector('.carousel');
-      container.innerHTML = ""; // clear existing content
+      container.innerHTML = ""; // clear container
       nftList.forEach(nft => {
-        if (nft.chain === "Tezos") {
-          fetchTezosNFT(nft.contract, nft.tokenId).then(tokenData => {
-            let name = "Tezos NFT";
-            let imageUrl = "";
-            if (tokenData && tokenData.metadata) {
-              name = tokenData.metadata.name || name;
-              imageUrl = tokenData.metadata.displayUri || tokenData.metadata.artifactUri || "";
-              if(imageUrl.startsWith("ipfs://")) {
-                imageUrl = imageUrl.replace("ipfs://", "https://ipfs.io/ipfs/");
-              }
-            }
-            const card = document.createElement('div');
-            card.classList.add('nft-card');
-            card.innerHTML = `
-              <a href="${nft.marketplace}" target="_blank">
-                <img src="${imageUrl}" alt="${name}" />
-                <h3>${name}</h3>
-              </a>
-            `;
-            container.appendChild(card);
-          });
+        let fetchPromise;
+        if(nft.chain === "Tezos") {
+          fetchPromise = fetchTezosNFT(nft.contract, nft.tokenId);
+        } else if(nft.chain === "Foundation") {
+          fetchPromise = fetchFoundationNFT(nft.contract, nft.tokenId);
+        } else if(nft.chain === "Base") {
+          fetchPromise = fetchBaseNFT(nft.contract, nft.tokenId);
+        } else {
+          fetchPromise = Promise.resolve(null);
         }
-        // Extend with similar logic for other blockchains if desired.
+
+        fetchPromise.then(metadata => {
+          let name = `${nft.chain} NFT ${nft.tokenId}`;
+          let imageUrl = "";
+          if(nft.chain === "Tezos" && metadata && metadata.metadata) {
+            name = metadata.metadata.name || name;
+            imageUrl = metadata.metadata.displayUri || metadata.metadata.artifactUri || "";
+            if(imageUrl.startsWith("ipfs://")) {
+              imageUrl = imageUrl.replace("ipfs://", "https://ipfs.io/ipfs/");
+            }
+          } else if(nft.chain === "Foundation" && metadata) {
+            name = metadata.name || name;
+            imageUrl = metadata.image_url || "";
+            if(imageUrl.startsWith("ipfs://")) {
+              imageUrl = imageUrl.replace("ipfs://", "https://ipfs.io/ipfs/");
+            }
+          } else if(nft.chain === "Base" && metadata) {
+            name = metadata.name || name;
+            imageUrl = metadata.image_url || "";
+          }
+          if(!imageUrl) {
+            imageUrl = "https://via.placeholder.com/200x200?text=No+Image";
+          }
+          const card = document.createElement('div');
+          card.classList.add('nft-card');
+          card.innerHTML = `
+            <a href="${nft.marketplace}" target="_blank">
+              <img src="${imageUrl}" alt="${name}" />
+              <h3>${name}</h3>
+            </a>
+          `;
+          container.appendChild(card);
+        });
       });
     }
 
