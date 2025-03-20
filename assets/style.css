@@ -84,12 +84,23 @@ section {
 .carousel {
     display: flex;
     overflow-x: auto;
-    gap: 10px;
+    gap: 15px;
+    padding: 10px 0;
 }
-.carousel img {
-    max-width: 100%;
+.nft-card {
+    width: 200px;
+    text-align: center;
+}
+.nft-card img {
+    width: 100%;
     height: auto;
-    border: 2px solid #eee;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.nft-card h3 {
+    font-size: 1em;
+    margin-top: 5px;
+    color: #fff;
 }
 
 .linktree-button {

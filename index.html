@@ -35,7 +35,10 @@
   <!-- About Section -->
   <section id="about">
     <h2>About @jams2blues &amp; @quantaphoria</h2>
-    <p>@jams2blues is a World Record Guitarist, visionary artist, and the dynamic lead singer of <a href="https://twitter.com/quantaphoria" target="_blank">@quantaphoria</a>. With "Save The World With Art™" as his mantra, he fuses cutting-edge digital art with electrifying musical performances, redefining the intersection of art and technology.</p>
+    <p>
+      @jams2blues is an internationally exhibited artist, world record-holding guitarist, and the dynamic lead singer of 
+      <a href="https://twitter.com/quantaphoria" target="_blank">@quantaphoria</a>. With the mantra <strong>"Save The World With Art™"</strong>, he fuses cutting-edge digital art with electrifying live performances, reimagining the future of creative expression.
+    </p>
   </section>
 
   <!-- Real-Time Stats Section -->
@@ -56,11 +59,11 @@ Type 'help' to see available commands...
     </div>
   </section>
 
-  <!-- Multimedia Gallery Section -->
+  <!-- NFT & Multimedia Showcase Section -->
   <section id="multimedia">
     <h2>NFT &amp; Multimedia Showcase</h2>
     <div class="carousel">
-      <img src="assets/abundance.png" alt="Abundance Snapshot">
+      <!-- NFT cards will be dynamically loaded here -->
     </div>
   </section>
 
@@ -89,7 +92,7 @@ Type 'help' to see available commands...
   <script src="assets/terminal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Render Chart.js graph (sample data; replace with live API data if desired)
+    // Sample Chart.js graph (placeholder data)
     const ctx = document.getElementById('statsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
@@ -109,7 +112,7 @@ Type 'help' to see available commands...
     });
   </script>
   <script>
-    // Fullscreen toggle for the generative artwork banner
+    // Fullscreen toggle for the banner
     document.getElementById('fullscreen-btn').addEventListener('click', function() {
       const banner = document.getElementById('animated-header');
       if (!document.fullscreenElement) {
@@ -122,12 +125,11 @@ Type 'help' to see available commands...
     });
   </script>
   <script>
-    // Like button functionality using CountAPI (serverless visitor counter)
+    // Like button functionality using CountAPI with updated key ('homepage')
     const likeButton = document.getElementById('like-button');
     const likeCountDisplay = document.getElementById('like-count');
-    // Updated endpoint using 'homepage' as the key to avoid potential issues
     const countAPIUrl = "https://api.countapi.xyz";
-  
+
     function updateLikeCount() {
       fetch(`${countAPIUrl}/get/jams2blues/homepage`)
         .then(response => response.json())
@@ -138,7 +140,7 @@ Type 'help' to see available commands...
           likeCountDisplay.textContent = "Likes: N/A";
         });
     }
-  
+
     likeButton.addEventListener('click', () => {
       fetch(`${countAPIUrl}/hit/jams2blues/homepage`)
         .then(response => response.json())
@@ -149,8 +151,70 @@ Type 'help' to see available commands...
           likeCountDisplay.textContent = "Likes: Error";
         });
     });
-  
+
     updateLikeCount();
-  </script>  
+  </script>
+  <script>
+    // Dynamic NFT & Multimedia Showcase using TzKT API for Tezos NFTs
+    const nftList = [
+      {
+        chain: "Tezos",
+        contract: "KT1KyEo6DeKzpxCT1qusrgPJt5noWdiEpYPJ",
+        tokenId: "3",
+        marketplace: "https://objkt.com/asset/KT1KyEo6DeKzpxCT1qusrgPJt5noWdiEpYPJ/3"
+      },
+      {
+        chain: "Tezos",
+        contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn",
+        tokenId: "123",  // example token id; update as needed
+        marketplace: "https://objkt.com/asset/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/123"
+      }
+      // Add additional NFT objects here for other tokens and blockchains
+    ];
+
+    function fetchTezosNFT(contract, tokenId) {
+      const url = `https://api.tzkt.io/v1/tokens?contract=${contract}&tokenId=${tokenId}`;
+      return fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            return data[0]; // take the first result
+          }
+          return null;
+        });
+    }
+
+    function renderNFTs() {
+      const container = document.querySelector('.carousel');
+      container.innerHTML = ""; // clear existing content
+      nftList.forEach(nft => {
+        if (nft.chain === "Tezos") {
+          fetchTezosNFT(nft.contract, nft.tokenId).then(tokenData => {
+            let name = "Tezos NFT";
+            let imageUrl = "";
+            if (tokenData && tokenData.metadata) {
+              name = tokenData.metadata.name || name;
+              imageUrl = tokenData.metadata.displayUri || tokenData.metadata.artifactUri || "";
+              if(imageUrl.startsWith("ipfs://")) {
+                imageUrl = imageUrl.replace("ipfs://", "https://ipfs.io/ipfs/");
+              }
+            }
+            const card = document.createElement('div');
+            card.classList.add('nft-card');
+            card.innerHTML = `
+              <a href="${nft.marketplace}" target="_blank">
+                <img src="${imageUrl}" alt="${name}" />
+                <h3>${name}</h3>
+              </a>
+            `;
+            container.appendChild(card);
+          });
+        }
+        // Extend with similar logic for other blockchains if desired.
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderNFTs);
+  </script>
 </body>
 </html>
