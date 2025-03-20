@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(() => "Error fetching commit data.");
     },
     linktree: "Discover my digital showcase at: https://linktr.ee/jams2blues",
-    solo: "World Record: 25h 15m of nonstop improvised guitar. Details on my Linktree: https://linktr.ee/jams2blues"
+    solo: "World Record: 25h 15m of nonstop improvised guitar. Learn more at: https://linktr.ee/jams2blues"
   };
 
   function appendOutput(text) {
@@ -32,19 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function processCommand(cmd) {
-    const lowerCmd = cmd.toLowerCase();
-    if (lowerCmd === "clear") {
+    const lower = cmd.toLowerCase();
+    if (lower === 'clear') {
       output.textContent = "";
       return;
     }
-    if (commands.hasOwnProperty(lowerCmd)) {
-      const result = commands[lowerCmd];
-      if (typeof result === "function") {
-        const res = result();
-        if (res instanceof Promise) {
-          res.then(text => appendOutput(text));
+    if (commands.hasOwnProperty(lower)) {
+      const result = commands[lower];
+      if (typeof result === 'function') {
+        const val = result();
+        if (val instanceof Promise) {
+          val.then(text => appendOutput(text));
         } else {
-          appendOutput(res);
+          appendOutput(val);
         }
       } else {
         appendOutput(result);

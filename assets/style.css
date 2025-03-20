@@ -5,16 +5,16 @@ body {
     padding: 0;
     background: #111;
     color: #eee;
-}
-
-header {
+  }
+  
+  /* Banner */
+  header {
     position: relative;
     width: 100%;
-    max-height: 400px;  /* Limits banner height */
+    max-height: 400px;
     overflow: hidden;
-}
-
-#fullscreen-btn {
+  }
+  #fullscreen-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -24,54 +24,55 @@ header {
     border: none;
     cursor: pointer;
     border-radius: 4px;
-}
-
-#social-links ul {
+  }
+  
+  /* Social Navigation */
+  #social-links ul {
     list-style: none;
     padding: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background: #222;
     margin: 0;
-}
-#social-links ul li {
-    margin: 0 15px;
-}
-#social-links ul li a {
+  }
+  #social-links ul li {
+    margin: 5px 15px;
+  }
+  #social-links ul li a {
     color: #eee;
     text-decoration: none;
     font-size: 1.2em;
     transition: color 0.3s ease;
-}
-#social-links ul li a:hover {
+  }
+  #social-links ul li a:hover {
     color: #1da1f2;
-}
-
-section {
+  }
+  
+  /* Sections */
+  section {
     padding: 20px;
     margin: 0 auto;
     max-width: 800px;
-}
-
-#about {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-#terminal-container {
+  }
+  #about p {
+    line-height: 1.5;
+  }
+  
+  /* Terminal */
+  #terminal-container {
     background: #000;
     color: #0f0;
     padding: 10px;
     font-family: "Courier New", monospace;
     margin-top: 10px;
-}
-#terminal-output {
+  }
+  #terminal-output {
     white-space: pre-wrap;
     min-height: 120px;
     overflow-y: auto;
-}
-#terminal-input {
+  }
+  #terminal-input {
     width: 100%;
     padding: 10px;
     border: none;
@@ -79,46 +80,47 @@ section {
     color: #0f0;
     font-family: "Courier New", monospace;
     margin-top: 5px;
-}
-
-/* Slider Styles */
-.carousel-section {
+  }
+  
+  /* Carousel */
+  .carousel-section {
     margin-bottom: 40px;
-}
-.slider {
+  }
+  .slider {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     margin: 20px 0;
-}
-.slider-arrow {
+  }
+  .slider-arrow {
     background: #1da1f2;
     border: none;
     color: #fff;
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
-}
-.slider-card {
+  }
+  .slider-card {
     width: 400px;
     text-align: center;
-}
-.slider-card img {
+  }
+  .slider-card img {
     width: 100%;
     height: auto;
     object-fit: contain;
     border: 2px solid #ccc;
     border-radius: 8px;
-}
-.slider-card h3 {
+  }
+  .slider-card h3 {
     font-size: 1em;
     margin-top: 5px;
     color: #fff;
-}
-
-.linktree-button {
+  }
+  
+  /* Linktree Button */
+  .linktree-button {
     display: inline-block;
     background: #1da1f2;
     color: #fff;
@@ -126,22 +128,28 @@ section {
     text-decoration: none;
     border-radius: 4px;
     transition: background 0.3s ease;
-}
-.linktree-button:hover {
+  }
+  .linktree-button:hover {
     background: #0d8ddb;
-}
-
-#like-section {
-    text-align: center;
-    padding: 20px;
-}
-#like-button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    background: #1da1f2;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
+  }
+  
+  /* Twitter Timeline Container */
+  .twitter-container {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .slider-card {
+      width: 90%;
+    }
+    #social-links ul li a {
+      font-size: 1em;
+    }
+    header {
+      max-height: 300px;
+    }
+  }
+  

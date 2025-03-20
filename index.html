@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jams2Blues Interactive Profile</title>
+
+  <!-- FontAwesome (without integrity to avoid blocking) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
   <link rel="stylesheet" href="assets/style.css">
-  <!-- FontAwesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
-        integrity="sha512-xh6ycT8b7F/E3L9bR8pVw1uECX5+Epl6tB+zFZkqg+6lycDqFBVnZ5z3lXfrEVde1pC8K4H9E+ZSnN4e+Erb/g==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Banner Section with Fullscreen Toggle -->
+  <!-- Banner with Fullscreen Toggle -->
   <header id="header-container">
     <object type="image/svg+xml" data="assets/abundance.svg" id="animated-header">
       Your browser does not support SVG.
@@ -37,7 +39,7 @@
     <p>
       @jams2blues is an internationally exhibited artist, world record–holding guitarist, and the dynamic lead singer of 
       <a href="https://twitter.com/quantaphoria" target="_blank">@quantaphoria</a>. With the mantra 
-      <strong>"Save The World With Art™"</strong>, he fuses cutting-edge digital art with electrifying live performances to redefine creative expression.
+      <strong>"Save The World With Art™"</strong>, he fuses cutting‐edge digital art with electrifying live performances to redefine creative expression.
     </p>
   </section>
 
@@ -59,30 +61,23 @@ Type 'help' to see available commands...
     </div>
   </section>
 
-  <!-- NFT & Multimedia Showcase Section -->
+  <!-- NFT & Multimedia Showcase Section (Tezos Only) -->
   <section id="multimedia">
     <h2>NFT &amp; Multimedia Showcase</h2>
-    
     <div id="carousel-tezos" class="carousel-section">
       <h3>Tezos FOC</h3>
       <div class="slider" id="slider-tezos"></div>
-    </div>
-    
-    <div id="carousel-foundation" class="carousel-section">
-      <h3>Eth FOC (Foundation)</h3>
-      <div class="slider" id="slider-foundation"></div>
-    </div>
-    
-    <div id="carousel-base" class="carousel-section">
-      <h3>Base Eth FOC</h3>
-      <div class="slider" id="slider-base"></div>
     </div>
   </section>
 
   <!-- Live Twitter Feed Section -->
   <section id="social-feed">
     <h2>Live Twitter Feed</h2>
-    <a class="twitter-timeline" data-height="400" href="https://twitter.com/jams2blues?ref_src=twsrc%5Etfw">Tweets by jams2blues</a>
+    <div class="twitter-container">
+      <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/jams2blues?ref_src=twsrc%5Etfw">
+        Tweets by jams2blues
+      </a>
+    </div>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </section>
 
@@ -93,18 +88,11 @@ Type 'help' to see available commands...
     <a href="https://linktr.ee/jams2blues" target="_blank" class="linktree-button">Visit My Linktree</a>
   </section>
 
-  <!-- Like Button / Visitor Counter Section -->
-  <section id="like-section">
-    <h2>Show Some Love</h2>
-    <button id="like-button">❤️ I visited this page</button>
-    <p id="like-count">Likes: ...</p>
-  </section>
-
-  <!-- Scripts -->
+  <!-- Terminal Script -->
   <script src="assets/terminal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart.js Graph Setup -->
   <script>
-    // Render a sample Chart.js graph (placeholder data)
     const ctx = document.getElementById('statsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
@@ -123,53 +111,37 @@ Type 'help' to see available commands...
       }
     });
   </script>
+
+  <!-- Fullscreen Toggle -->
   <script>
-    // Fullscreen toggle for the banner
-    document.getElementById('fullscreen-btn').addEventListener('click', function() {
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
       const banner = document.getElementById('animated-header');
       if (!document.fullscreenElement) {
         banner.requestFullscreen().catch(err => {
-          alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+          alert(`Error attempting fullscreen: ${err.message} (${err.name})`);
         });
       } else {
         document.exitFullscreen();
       }
     });
   </script>
-  <script>
-    // Like button functionality using CountAPI with updated key ('homepage')
-    const likeButton = document.getElementById('like-button');
-    const likeCountDisplay = document.getElementById('like-count');
-    const countAPIUrl = "https://api.countapi.xyz";
 
-    function updateLikeCount() {
-      fetch(`${countAPIUrl}/get/jams2blues/homepage`)
-        .then(response => response.json())
-        .then(data => {
-          likeCountDisplay.textContent = `Likes: ${data.value}`;
-        })
-        .catch(() => {
-          likeCountDisplay.textContent = "Likes: N/A";
-        });
+  <!-- Tezos NFT Carousel Logic -->
+  <script>
+    // Fetch Tezos NFT metadata via TzKT API
+    async function fetchTezosNFT(contract, tokenId) {
+      const url = `https://api.tzkt.io/v1/tokens?contract=${contract}&tokenId=${tokenId}`;
+      try {
+        const data = await fetch(url).then(r => r.json());
+        if (data.length > 0) return data[0];
+      } catch (err) {
+        console.error("Error fetching Tezos NFT:", err);
+      }
+      return null;
     }
 
-    likeButton.addEventListener('click', () => {
-      fetch(`${countAPIUrl}/hit/jams2blues/homepage`)
-        .then(response => response.json())
-        .then(data => {
-          likeCountDisplay.textContent = `Likes: ${data.value}`;
-        })
-        .catch(() => {
-          likeCountDisplay.textContent = "Likes: Error";
-        });
-    });
-
-    updateLikeCount();
-  </script>
-  <script>
-    // NFT Carousel Setup
+    // NFT list for Tezos FOC (Compressionism FOC, excluding Abundance)
     const nftList = [
-      // Tezos: Compressionism FOC tokens (excluding Abundance)
       { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "14", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/14" },
       { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "13", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/13" },
       { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "12", marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/12" },
@@ -181,140 +153,67 @@ Type 'help' to see available commands...
       { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "3",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/3" },
       { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "2",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/2" },
       { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "1",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/1" },
-      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "0",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/0" },
-
-      // Foundation (Ethereum) FOC Collection
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "12", marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/12" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "11", marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/11" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "5",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/5" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "7",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/7" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "8",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/8" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "1",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/1" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "6",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/6" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "2",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/2" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "9",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/9" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "4",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/4" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "3",  marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/3" },
-      { chain: "Foundation", contract: "0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B", tokenId: "10", marketplace: "https://foundation.app/mint/eth/0x6BC15cbEBD0fC8Ad8f167E6A07e271409FfAf83B/10" },
-
-      // Base Eth: Jams2blues Artistry Collection
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "12", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/12" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "13", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/13" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "14", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/14" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "15", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/15" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "16", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/16" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "11", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/11" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "17", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/17" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "18", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/18" },
-      { chain: "Base", contract: "0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13", tokenId: "10", marketplace: "https://opensea.io/assets/base/0xac6f08ff5ebb2d29c8ae2048220036124f5bbc13/10" }
+      { chain: "Tezos", contract: "KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn", tokenId: "0",  marketplace: "https://objkt.com/tokens/KT1JFbuyKULdgHi8KjbPAx5Ys8znyXe8BDpn/0" }
     ];
 
-    // Fetch functions for different chains
-    function fetchTezosNFT(contract, tokenId) {
-      const url = `https://api.tzkt.io/v1/tokens?contract=${contract}&tokenId=${tokenId}`;
-      return fetch(url)
-        .then(response => response.json())
-        .then(data => data.length > 0 ? data[0] : null)
-        .catch(() => null);
-    }
-
-    function fetchFoundationNFT(contract, tokenId) {
-      const url = `https://api.foundation.app/v2/editions/${contract}/${tokenId}`;
-      return fetch(url)
-        .then(response => response.json())
-        .then(data => data)
-        .catch(() => null);
-    }
-
-    function fetchBaseNFT(contract, tokenId) {
-      const url = `https://api.opensea.io/api/v1/asset/${contract}/${tokenId}/?include_orders=false`;
-      return fetch(url)
-        .then(response => response.json())
-        .then(data => data)
-        .catch(() => null);
-    }
-
-    // Create a slider for a specific chain
+    // Create a slider for Tezos NFTs
     function createSlider(chain, sliderId) {
-      const nftArray = nftList.filter(nft => nft.chain === chain);
+      const nftArray = nftList.filter(n => n.chain === chain);
       const container = document.getElementById(sliderId);
       if (!container) return;
-      container.innerHTML = '';
+      container.innerHTML = "";
 
-      // Create slider structure: left arrow, card container, right arrow
-      const leftBtn = document.createElement('button');
-      leftBtn.classList.add('slider-arrow');
-      leftBtn.innerHTML = '&lt;';
-      const rightBtn = document.createElement('button');
-      rightBtn.classList.add('slider-arrow');
-      rightBtn.innerHTML = '&gt;';
-      const cardContainer = document.createElement('div');
-      cardContainer.classList.add('slider-card');
+      // Build slider structure: left arrow, card container, right arrow
+      const leftBtn = document.createElement("button");
+      leftBtn.classList.add("slider-arrow");
+      leftBtn.textContent = "<";
+      const cardContainer = document.createElement("div");
+      cardContainer.classList.add("slider-card");
+      const rightBtn = document.createElement("button");
+      rightBtn.classList.add("slider-arrow");
+      rightBtn.textContent = ">";
 
       container.appendChild(leftBtn);
       container.appendChild(cardContainer);
       container.appendChild(rightBtn);
 
       let currentIndex = 0;
-      function updateCard() {
+      async function updateCard() {
         const nft = nftArray[currentIndex];
-        cardContainer.innerHTML = 'Loading...';
-        let fetchPromise;
-        if (chain === "Tezos") {
-          fetchPromise = fetchTezosNFT(nft.contract, nft.tokenId);
-        } else if (chain === "Foundation") {
-          fetchPromise = fetchFoundationNFT(nft.contract, nft.tokenId);
-        } else if (chain === "Base") {
-          fetchPromise = fetchBaseNFT(nft.contract, nft.tokenId);
-        } else {
-          fetchPromise = Promise.resolve(null);
+        cardContainer.innerHTML = "Loading...";
+        let name = `Tezos NFT #${nft.tokenId}`;
+        let imageUrl = "https://via.placeholder.com/400x400?text=No+Image";
+        const data = await fetchTezosNFT(nft.contract, nft.tokenId);
+        if (data && data.metadata) {
+          name = data.metadata.name || name;
+          const possibleUri = data.metadata.displayUri || data.metadata.artifactUri;
+          if (possibleUri) {
+            imageUrl = possibleUri.startsWith("ipfs://")
+              ? possibleUri.replace("ipfs://", "https://ipfs.io/ipfs/")
+              : possibleUri;
+          }
         }
-        fetchPromise.then(metadata => {
-          let name = `${chain} NFT ${nft.tokenId}`;
-          let imageUrl = "";
-          if (chain === "Tezos" && metadata && metadata.metadata) {
-            name = metadata.metadata.name || name;
-            imageUrl = metadata.metadata.displayUri || metadata.metadata.artifactUri || "";
-            if(imageUrl.startsWith("ipfs://")) {
-              imageUrl = imageUrl.replace("ipfs://", "https://ipfs.io/ipfs/");
-            }
-          } else if (chain === "Foundation" && metadata) {
-            name = metadata.name || name;
-            imageUrl = metadata.image_url || "";
-            if(imageUrl.startsWith("ipfs://")) {
-              imageUrl = imageUrl.replace("ipfs://", "https://ipfs.io/ipfs/");
-            }
-          } else if (chain === "Base" && metadata) {
-            name = metadata.name || name;
-            imageUrl = metadata.image_url || "";
-          }
-          if (!imageUrl) {
-            imageUrl = "https://via.placeholder.com/400x400?text=No+Image";
-          }
-          cardContainer.innerHTML = `
-            <a href="${nft.marketplace}" target="_blank">
-              <img src="${imageUrl}" alt="${name}" />
-              <h3>${name}</h3>
-            </a>
-          `;
-        });
+        cardContainer.innerHTML = `
+          <a href="${nft.marketplace}" target="_blank">
+            <img src="${imageUrl}" alt="${name}" />
+            <h3>${name}</h3>
+          </a>
+        `;
       }
 
-      leftBtn.addEventListener('click', () => {
+      leftBtn.addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + nftArray.length) % nftArray.length;
         updateCard();
       });
-      rightBtn.addEventListener('click', () => {
+      rightBtn.addEventListener("click", () => {
         currentIndex = (currentIndex + 1) % nftArray.length;
         updateCard();
       });
       updateCard();
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", () => {
       createSlider("Tezos", "slider-tezos");
-      createSlider("Foundation", "slider-foundation");
-      createSlider("Base", "slider-base");
     });
   </script>
 </body>
