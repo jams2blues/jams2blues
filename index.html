@@ -1,0 +1,69 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jams2Blues Interactive Profile</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <!-- Animated Header Inspired by "Counterchange Tessellation: Abundance" -->
+  <header>
+    <object type="image/svg+xml" data="assets/abundance.svg" id="animated-header">
+      Your browser does not support SVG.
+    </object>
+  </header>
+
+  <!-- Real-Time Stats Section -->
+  <section id="stats">
+    <h2>Real-Time Stats & Milestones</h2>
+    <canvas id="statsChart" width="400" height="200"></canvas>
+  </section>
+
+  <!-- Interactive Terminal Simulation -->
+  <section id="terminal">
+    <h2>Interactive Terminal</h2>
+    <div id="terminal-container">
+      <pre id="terminal-output">Welcome to Jams2Blues Interactive Terminal
+Type 'help' to see available commands...</pre>
+      <input type="text" id="terminal-input" placeholder="Enter command">
+    </div>
+  </section>
+
+  <!-- Multimedia Gallery Section -->
+  <section id="multimedia">
+    <h2>NFT & Multimedia Showcase</h2>
+    <div class="carousel">
+      <!-- Replace or add more media assets as desired -->
+      <img src="assets/abundance.png" alt="Abundance Snapshot" />
+    </div>
+  </section>
+
+  <!-- Terminal and Chart Scripts -->
+  <script src="assets/terminal.js"></script>
+  <!-- Chart.js from a reliable CDN; feel free to self-host if preferred -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Render a sample chart using Chart.js.
+    // Replace the sample data with dynamic GitHub stats as needed.
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Commits',
+          data: [12, 19, 3, 5, 2],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  </script>
+</body>
+</html>
