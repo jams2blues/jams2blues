@@ -81,23 +81,38 @@ section {
     margin-top: 5px;
 }
 
-.carousel {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding: 10px 0;
+/* Slider Styles */
+.carousel-section {
+    margin-bottom: 40px;
 }
-.nft-card {
-    width: 200px;
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+.slider-arrow {
+    background: #1da1f2;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.slider-card {
+    width: 400px;
     text-align: center;
 }
-.nft-card img {
+.slider-card img {
     width: 100%;
     height: auto;
+    object-fit: contain;
+    border: 2px solid #ccc;
     border-radius: 8px;
-    border: 1px solid #ccc;
 }
-.nft-card h3 {
+.slider-card h3 {
     font-size: 1em;
     margin-top: 5px;
     color: #fff;
