@@ -7,8 +7,8 @@ Inspired by my one-of-a-kind generative NFT, **Counterchange Tessellation: Abund
 
 **What You'll Discover Here:**
 - **Dynamic Visualizations:** Real-time stats and project milestones.
-- **Interactive Terminal:** Run commands to uncover hidden messages and demos.
-- **NFT & Web3 Integration:** Explore my digital art and blockchain projects.
-- **Multimedia Storytelling:** Videos, snapshots, and rotating inspirational quotes.
+- **Interactive Terminal:** Run commands to reveal hidden messages and demos.
+- **NFT & Web3 Integration:** Explore my digital art and on-chain projects.
+- **Social & Multimedia:** Connect with me on all platforms—Twitter, Instagram, GitHub, YouTube, and more.
 
 [Click here for the full interactive experience →](https://jams2blues.github.io/)

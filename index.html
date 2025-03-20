@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jams2Blues Interactive Profile</title>
   <link rel="stylesheet" href="assets/style.css">
+  <!-- Optional: FontAwesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6ycT8b7F/E3L9bR8pVw1uECX5+Epl6tB+zFZkqg+6lycDqFBVnZ5z3lXfrEVde1pC8K4H9E+ZSnN4e+Erb/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <!-- Animated Header Inspired by "Counterchange Tessellation: Abundance" -->
@@ -14,6 +16,17 @@
       Your browser does not support SVG.
     </object>
   </header>
+
+  <!-- Social Media Links -->
+  <nav id="social-links">
+    <ul>
+      <li><a href="https://twitter.com/jams2blues" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+      <li><a href="https://instagram.com/jams2blues" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+      <li><a href="https://github.com/jams2blues" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+      <li><a href="https://youtube.com/@jams2blues" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+      <!-- Add more social links if desired -->
+    </ul>
+  </nav>
 
   <!-- Real-Time Stats Section -->
   <section id="stats">
@@ -25,8 +38,10 @@
   <section id="terminal">
     <h2>Interactive Terminal</h2>
     <div id="terminal-container">
-      <pre id="terminal-output">Welcome to Jams2Blues Interactive Terminal
-Type 'help' to see available commands...</pre>
+      <pre id="terminal-output">
+Welcome to the Jams2Blues Interactive Terminal
+Type 'help' to see available commands...
+      </pre>
       <input type="text" id="terminal-input" placeholder="Enter command">
     </div>
   </section>
@@ -35,18 +50,18 @@ Type 'help' to see available commands...</pre>
   <section id="multimedia">
     <h2>NFT & Multimedia Showcase</h2>
     <div class="carousel">
-      <!-- Replace or add more media assets as desired -->
-      <img src="assets/abundance.png" alt="Abundance Snapshot" />
+      <!-- Add additional media assets as desired -->
+      <img src="assets/abundance.png" alt="Abundance Snapshot">
     </div>
   </section>
 
   <!-- Terminal and Chart Scripts -->
   <script src="assets/terminal.js"></script>
-  <!-- Chart.js from a reliable CDN; feel free to self-host if preferred -->
+  <!-- Chart.js from CDN; self-host if preferred -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // Render a sample chart using Chart.js.
-    // Replace the sample data with dynamic GitHub stats as needed.
+    // Replace sample data with live GitHub stats via API if desired.
     const ctx = document.getElementById('statsChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
